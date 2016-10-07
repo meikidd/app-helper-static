@@ -1,4 +1,4 @@
-import './home.css';
+import './index.less';
 
 import env from '../common/env/env';
 import React from 'react';

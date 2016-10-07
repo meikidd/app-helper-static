@@ -23,7 +23,7 @@ var webpackConfig = {
             'add-module-exports', // 实现 export default
             'transform-decorators-legacy', // 实现 @decorator
             'transform-runtime', // 类似 babel-polyfill，不用手动加载 babel-polyfill
-            ['antd', { style: 'css' }] // antd 按需加载
+            ['import', [{ 'libraryName': 'antd', style: true }]] // antd 按需加载
           ]
         },
       },
@@ -57,11 +57,11 @@ var webpackConfig = {
     ],
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
+    new webpack.optimize.CommonsChunkPlugin('common', 'common.js'), // 抽取 common 代码
     new ExtractTextPlugin('[name].css', {
       disable: false,
       allChunks: true,
-    }),
+    }), // 抽取 css 文件
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       output: {
