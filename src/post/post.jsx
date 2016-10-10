@@ -4,31 +4,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 
-import { Button } from 'antd';
-import createStore from '../common/redux/create-store';
+import { InputItem } from 'antd-mobile';
+import store from '../common/redux/create-store';
 import  * as action from '../common/redux/action-creators';
 
-const store = createStore();
+import AddElementBtn from './AddElementBtn';
+import TutorialElementType from '../common/enums/TutorialElementType';
 
 class Post extends React.Component {
-  onClick() {
-    this.props.dispatch(action.post());
+  constructor(props) {
+    super(props);
   }
   render() {
     return <div>
-      {this.props.loading && 'loading'}
-      <ul>
-        {this.props.tutorials.map(tutorial => <li key={tutorial.id}>{tutorial.id} - {tutorial.title}</li>)}
-      </ul>
-      <Button onClick={() => this.onClick()}>Post</Button>
+      <div><InputItem placeholder="title"/></div>
+      {this.props.elements.map((element) => {
+        return <div key={element.id}>
+          <AddElementBtn id={element.id} />
+          <div>{TutorialElementType.get(element.type).name}</div>
+        </div>;
+      })}
     </div>
   }
 }
 
 const mapStateToProps = (state/*, props*/) => {
   return {
-    tutorials: state._tutorial.tutorials,
-    loading: state._tutorial.loading,
+    elements: state._tutorial.elements,
   };
 };
 

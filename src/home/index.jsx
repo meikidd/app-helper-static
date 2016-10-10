@@ -3,7 +3,7 @@ import './index.less';
 import env from '../common/env/env';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'antd';
+import { Button } from 'antd-mobile';
 
 document.querySelector('#console').innerHTML = JSON.stringify(env, null, 4);
 
