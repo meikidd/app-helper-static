@@ -8,9 +8,9 @@
     "post/post": "./src/post/post.jsx"
   },
   "scripts": {
-    "build": "npm run clean && webpack --config webpack.config.js ",
-    "watch": "webpack -w",
     "clean": "rm -rf ./build",
+    "build": "npm run clean && webpack --config webpack.config.js ",
+    "server": "webpack-dev-server --hot --inline --content-base .",
     "lint": "eslint src",
     "lint-fix": "eslint src --fix"
   },
@@ -41,7 +41,8 @@
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2"
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
   },
   "repository": {
     "type": "git",
