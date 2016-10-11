@@ -6,10 +6,10 @@ import TutorialElementType from '../common/enums/TutorialElementType';
 
 class AddElementBtn extends React.Component {
   onImageBtnClick() {
-    this.props.dispatch(action.addElementAfter(this.props.id, TutorialElementType.IMAGE));
+    this.props.dispatch(action.addElement(this.props.id, TutorialElementType.IMAGE));
   }
   onTextBtnClick() {
-    this.props.dispatch(action.addElementAfter(this.props.id, TutorialElementType.TEXT));
+    this.props.dispatch(action.addElement(this.props.id, TutorialElementType.TEXT));
   }
   render() {
     return <div>

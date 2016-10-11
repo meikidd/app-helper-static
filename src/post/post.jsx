@@ -9,6 +9,8 @@ import store from '../common/redux/create-store';
 import  * as action from '../common/redux/action-creators';
 
 import AddElementBtn from './AddElementBtn';
+import TextElement from './TextElement';
+import ImageElement from './ImageElement';
 import TutorialElementType from '../common/enums/TutorialElementType';
 
 class Post extends React.Component {
@@ -21,7 +23,11 @@ class Post extends React.Component {
       {this.props.elements.map((element) => {
         return <div key={element.id}>
           <AddElementBtn id={element.id} />
-          <div>{TutorialElementType.get(element.type).name}</div>
+          {
+            element.type === TutorialElementType.TEXT.value
+            ? <TextElement {...element} />
+            : <ImageElement {...element} />
+          }
         </div>;
       })}
     </div>
