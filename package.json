@@ -20,6 +20,8 @@
     "enumify": "^1.0.4",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
+    "react-dropzone": "^3.6.0",
+    "react-native-camera-roll-picker": "^1.1.8",
     "react-redux": "^4.4.5",
     "redux": "^3.6.0"
   },
@@ -36,7 +38,8 @@
     "dora-plugin-webpack": "0.6.x",
     "eslint": "^2.7.0",
     "eslint-plugin-react": "4.x",
-    "html-webpack-plugin": "^2.22.0"
+    "html-webpack-plugin": "^2.22.0",
+    "postcss-pxtorem": "^3.3.1"
   },
   "repository": {
     "type": "git",
