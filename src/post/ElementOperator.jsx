@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Modal } from 'antd-mobile';
+import { Button, Modal, Icon } from 'antd-mobile';
 import  * as action from './actions';
 import TutorialElementType from '../common/enums/TutorialElementType';
 
@@ -31,15 +31,18 @@ class ElementOperator extends React.Component {
 
   }
   render() {
-    return <div>
+    return <div className="element-operator">
       {
         this.props.isEditing
-        ? <Button inline size="small" onClick={() => this.onEditDoneClick()}>完成</Button>
+        ? <span onClick={() => this.onEditDoneClick()}><Icon type="check-circle-o" /></span>
         : <span>
-            <Button inline size="small" onClick={() => this.onUpClick()}>↑</Button>
-            <Button inline size="small" onClick={() => this.onDownClick()}>↓</Button>
-            {this.props.type === TutorialElementType.TEXT.value && <Button inline size="small" onClick={() => this.onEditStartClick()}>编辑</Button>}
-            <Button inline size="small" onClick={() => this.onRemoveClick()}>删除</Button>
+            <span onClick={() => this.onUpClick()}><Icon type="circle-o-up" /></span>
+            <span onClick={() => this.onDownClick()}><Icon type="circle-o-down" /></span>
+            {
+              this.props.type === TutorialElementType.TEXT.value &&
+              <span onClick={() => this.onEditStartClick()}><Icon type="edit" /></span>
+            }
+            <span onClick={() => this.onRemoveClick()}><Icon type="delete" /></span>
         </span>
       }
     </div>

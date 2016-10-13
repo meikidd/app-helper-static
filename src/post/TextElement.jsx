@@ -10,16 +10,16 @@ class TextElement extends React.Component {
   }
   render() {
     // const { getFieldProps } = this.props.form;
-    return <div>
+    return <div className="text-element">
       <ElementOperator {...this.props} />
       {
         this.props.isEditing
-        ? <TextareaItem
+        ? <TextareaItem className="text-element-textarea"
             defaultValue={this.props.text}
             onChange={value => {this.onTextChange(value)}}
             autoHeight autoFocus
           />
-        : <span>{this.props.id} - {this.props.text}</span>
+        : <span>{this.props.text}</span>
       }
     </div>
   }
