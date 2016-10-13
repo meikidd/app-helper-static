@@ -17,30 +17,32 @@ export function _tutorial(state = initialTimeState, action) {
   const index = elements.findIndex((e) => e.id === action.id);
 
   switch (action.type) {
-    case 'ADD_ELEMENT':
-      if (action.elementType === TutorialElementType.TEXT.value) {
+    case 'ELEMENT_ADD_TEXT':
         elements.splice(index, 0, {
           id: action.elementId,
           type: action.elementType,
           text: '请输入内容',
           isEditing: false
         });
-      } else if(action.elementType === TutorialElementType.IMAGE.value) {
-        elements.splice(index, 0, {
-          id: action.elementId,
-          type: action.elementType,
-          url: '/默认图片路径',
-          isEditing: false
-        });
-      }
 
       elements = elements.concat([]);
       return {elements};
-    case 'EDIT_START_ELEMENT':
+    case 'ELEMENT_ADD_IMAGE':
+    case 'ELEMENT_ADD_TEXT':
+        elements.splice(index, 0, {
+          id: action.elementId,
+          type: action.elementType,
+          url: action.value,
+          isEditing: false
+        });
+
+      elements = elements.concat([]);
+      return {elements};
+    case 'ELEMENT_EDIT_START':
       elements[index].isEditing = true;
       elements = elements.concat([]);
       return {elements};
-    case 'EDIT_DONE_ELEMENT':
+    case 'ELEMENT_EDIT_DONE':
       let element = elements[index];
       element.isEditing = false;
       if (action.elementType === TutorialElementType.TEXT.value) {
@@ -50,19 +52,19 @@ export function _tutorial(state = initialTimeState, action) {
       }
       elements = elements.concat([]);
       return {elements};
-    case 'REMOVE_ELEMENT':
+    case 'ELEMENT_REMOVE':
       if(elements.length > 1) {
         elements.splice(index, 1);
         elements = elements.concat([]);
       }
       return {elements};
-    case 'UP_ELEMENT':
+    case 'ELEMENT_UP':
       if(index >= 1) {
         elements.splice(index - 1, 2, elements[index], elements[index - 1]);
         elements = elements.concat([]);
       }
       return {elements};
-    case 'DOWN_ELEMENT':
+    case 'ELEMENT_DOWN':
       if(index < elements.length) {
         elements.splice(index, 2, elements[index + 1], elements[index]);
         elements = elements.concat([]);

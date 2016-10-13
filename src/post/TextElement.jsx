@@ -17,7 +17,7 @@ class TextElement extends React.Component {
         ? <TextareaItem
             defaultValue={this.props.text}
             onChange={value => {this.onTextChange(value)}}
-            autoHeight
+            autoHeight autoFocus
           />
         : <span>{this.props.id} - {this.props.text}</span>
       }

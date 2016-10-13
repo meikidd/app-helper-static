@@ -6,8 +6,8 @@ import ElementOperator from './ElementOperator';
 class ImageElement extends React.Component {
   render() {
     return <div>
-      <ElementOperator id={this.props.id} />
-      <img src={this.props.url} />
+      <ElementOperator {...this.props} />
+      <img className="image-element" src={this.props.url} />
     </div>
   }
 }

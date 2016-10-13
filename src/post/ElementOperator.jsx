@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal } from 'antd-mobile';
 import  * as action from './actions';
+import TutorialElementType from '../common/enums/TutorialElementType';
 
 const alert = Modal.alert;
 
@@ -37,7 +38,7 @@ class ElementOperator extends React.Component {
         : <span>
             <Button inline size="small" onClick={() => this.onUpClick()}>↑</Button>
             <Button inline size="small" onClick={() => this.onDownClick()}>↓</Button>
-            <Button inline size="small" onClick={() => this.onEditStartClick()}>编辑</Button>
+            {this.props.type === TutorialElementType.TEXT.value && <Button inline size="small" onClick={() => this.onEditStartClick()}>编辑</Button>}
             <Button inline size="small" onClick={() => this.onRemoveClick()}>删除</Button>
         </span>
       }

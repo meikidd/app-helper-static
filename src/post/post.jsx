@@ -19,7 +19,7 @@ class Post extends React.Component {
   }
   render() {
     return <div>
-      <div><InputItem placeholder="title"/></div>
+      <div><InputItem placeholder="标题"/></div>
       {this.props.elements.map((element) => {
         return <div key={element.id}>
           <AddElementBtn id={element.id} />
