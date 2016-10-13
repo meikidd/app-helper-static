@@ -65,7 +65,7 @@ export function _tutorial(state = initialTimeState, action) {
       }
       return {elements};
     case 'ELEMENT_DOWN':
-      if(index < elements.length) {
+      if(index < elements.length && elements.length > 1) {
         elements.splice(index, 2, elements[index + 1], elements[index]);
         elements = elements.concat([]);
       }
