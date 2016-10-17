@@ -53,5 +53,11 @@ export default {
       value,
       type: 'ELEMENT_TEXT_CHANGE'
     }
+  },
+  titleChange : (value) => {
+    return {
+      value,
+      type: 'TITLE_CHANGE'
+    }
   }
 }

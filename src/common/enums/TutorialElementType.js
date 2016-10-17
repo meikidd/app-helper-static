@@ -12,11 +12,11 @@ export default class TutorialElementType extends Enum {
 
 TutorialElementType.initEnum({
   TEXT: {
-    value: 1,
+    value: 'text',
     description: '文本',
   },
   IMAGE: {
-    value: 2,
+    value: 'image',
     description: '图片',
   },
 });

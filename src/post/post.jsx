@@ -4,9 +4,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 
-import { InputItem } from 'antd-mobile';
+import { Button, InputItem } from 'antd-mobile';
 import store from '../common/redux/create-store';
-import  * as action from '../common/redux/action-creators';
+import  * as action from './actions';
+import Ajax from '../common/ajax/ajax';
 
 import AddElementBtn from './AddElementBtn';
 import TextElement from './TextElement';
@@ -17,9 +18,24 @@ class Post extends React.Component {
   constructor(props) {
     super(props);
   }
+  onSaveClick() {
+    console.log(store.getState());
+    Ajax.post('/api/tutorials', {
+      body: store.getState()._tutorial
+    }).then(data => {
+      console.log(data);
+    });
+  }
+  onTitleChange(value) {
+    this.props.dispatch(action.titleChange(value));
+  }
   render() {
     return <div>
-      <div><InputItem className="post-title" placeholder="请输入标题" maxLength={15} /></div>
+      <div>
+        <InputItem className="post-title" placeholder="请输入标题" maxLength={15}
+          onChange={e => this.onTitleChange(e)}
+        />
+      </div>
       {this.props.elements.map((element) => {
         return <div key={element.id}>
           <AddElementBtn id={element.id} />
@@ -30,6 +46,7 @@ class Post extends React.Component {
           }
         </div>;
       })}
+      <div><Button onClick={value => this.onSaveClick(value)}>保存</Button></div>
     </div>
   }
 }
