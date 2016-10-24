@@ -1,14 +1,15 @@
 
-import TutorialElementType from '../enums/TutorialElementType';
+import Enums from '../enums';
 
 var initialTimeState = {
   creator: 'meiqingguang',
   title: '',
   device: 'phone',
   os: 'ios',
+  app: '',
   elements: [{
     id: 1,
-    type: TutorialElementType.TEXT.value,
+    type: Enums.ElementType.TEXT.value,
     text: '请输入内容',
     isEditing: false
   }]
@@ -49,9 +50,9 @@ export function _tutorial(state = initialTimeState, action) {
     case 'ELEMENT_EDIT_DONE':
       let element = elements[index];
       element.isEditing = false;
-      if (action.elementType === TutorialElementType.TEXT.value) {
+      if (action.elementType === Enums.ElementType.TEXT.value) {
         element.text = action.value;
-      } else if(action.elementType === TutorialElementType.IMAGE.value) {
+      } else if(action.elementType === Enums.ElementType.IMAGE.value) {
         element.url = action.value;
       }
       elements = elements.concat([]);

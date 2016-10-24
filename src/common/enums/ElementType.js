@@ -1,16 +1,16 @@
 /*
-TutorialElementType
+  ElementType
 */
 
 import {Enum} from 'enumify';
 
-export default class TutorialElementType extends Enum {
+export default class ElementType extends Enum {
   static get(value) {
-    return TutorialElementType.enumValues.find(item => item.value === value)
+    return ElementType.enumValues.find(item => item.value === value)
   }
 }
 
-TutorialElementType.initEnum({
+ElementType.initEnum({
   TEXT: {
     value: 'text',
     description: '文本',

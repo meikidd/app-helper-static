@@ -1,11 +1,8 @@
 module.exports = {
 	isInApp: false,
 	env: 'daily',
-	os: {
-		name: 'mac',
-		version: '10.11.6',
-	},
-	device: 'PC',
+	os: 'ios',
+	device: 'pc',
 	app: null,
 	hosts: {
 		cdn: 'cdndaily.52shangou.com',

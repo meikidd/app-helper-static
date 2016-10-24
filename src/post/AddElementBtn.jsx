@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import Dropzone from 'react-dropzone';
 import { Button, Icon, ImagePicker } from 'antd-mobile';
 import  * as action from './actions';
-import TutorialElementType from '../common/enums/TutorialElementType';
+import Enums from '../common/enums';
+
 class AddElementBtn extends React.Component {
   constructor(props) {
     super(props);
@@ -18,10 +19,10 @@ class AddElementBtn extends React.Component {
   }
   onImageBtnClick(image) {
     console.log('hello')
-    this.props.dispatch(action.addImageElement(this.props.id, TutorialElementType.IMAGE, image.preview));
+    this.props.dispatch(action.addImageElement(this.props.id, Enums.ElementType.IMAGE, image.preview));
   }
   onTextBtnClick() {
-    this.props.dispatch(action.addTextElement(this.props.id, TutorialElementType.TEXT));
+    this.props.dispatch(action.addTextElement(this.props.id, Enums.ElementType.TEXT));
   }
   render() {
     return <div className="add-element-btn">

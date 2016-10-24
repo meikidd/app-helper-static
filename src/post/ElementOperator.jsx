@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, Icon } from 'antd-mobile';
 import  * as action from './actions';
-import TutorialElementType from '../common/enums/TutorialElementType';
+import Enums from '../common/enums';
 
 const alert = Modal.alert;
 
@@ -39,7 +39,7 @@ class ElementOperator extends React.Component {
             <span onClick={() => this.onUpClick()}><Icon type="circle-o-up" /></span>
             <span onClick={() => this.onDownClick()}><Icon type="circle-o-down" /></span>
             {
-              this.props.type === TutorialElementType.TEXT.value &&
+              this.props.type === Enums.ElementType.TEXT.value &&
               <span onClick={() => this.onEditStartClick()}><Icon type="edit" /></span>
             }
             <span onClick={() => this.onRemoveClick()}><Icon type="delete" /></span>
