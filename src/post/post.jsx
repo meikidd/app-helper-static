@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider, connect } from 'react-redux';
 
+import { createForm } from 'rc-form';
 import { Button, InputItem, List, Picker, Modal, WhiteSpace } from 'antd-mobile';
 import store from '../common/redux/create-store';
 import Enums from '../common/enums';
@@ -15,56 +16,32 @@ import AddElementBtn from './AddElementBtn';
 import TextElement from './TextElement';
 import ImageElement from './ImageElement';
 
-import { createForm } from 'rc-form';
 
 class Post extends React.Component {
   constructor(props) {
     super(props);
+    this.getAppList();
     this.state = {
       isFirstView: true,
       isShowAppList: false,
+      appList: [],
       title: '',
-      appList: [{
-        id: 1,
-        name: '微信'
-      }, {
-        id: 2,
-        name: '微店1'
-      }, {
-        id: 3,
-        name: '钉钉1'
-      }, {
-        id: 4,
-        name: 'ios系统'
-      }, {
-        id: 5,
-        name: '微信'
-      }, {
-        id: 6,
-        name: '微店1'
-      }, {
-        id: 7,
-        name: '钉钉1'
-      }, {
-        id: 8,
-        name: 'ios系统'
-      }],
+      creator: 'meiqingguang',
       app: '',
       device: '',
       os: ''
-    }
+    };
   }
   onSaveClick() {
-    const data = store.getState()._tutorial;
-    Ajax.post('/api/tutorials', {
-      body: data
-    }).then(res => {
+    const {creator, app, device, os, title} = this.state
+    const data = Object.assign({}, store.getState()._tutorial, {creator, app, device, os, title});
+    Ajax.post('/api/tutorials', {data}).then(res => {
       console.log(res);
     });
   }
   onTitleChange(value) {
     this.setState({ title: value });
-    this.props.dispatch(action.titleChange(value));
+    // this.props.dispatch(action.titleChange(value));
   }
   onAppChange(value) {
     this.setState({
@@ -88,6 +65,11 @@ class Post extends React.Component {
   }
   onOsChange(values) {
     this.setState({ os: values[0] });
+  }
+  getAppList() {
+    Ajax.get('/api/apps').then(res => {
+      this.setState({ appList: res.data})
+    });
   }
   nextView() {
     this.setState({isFirstView: false})

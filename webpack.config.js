@@ -4,6 +4,7 @@ const pxtorem = require('postcss-pxtorem');
 
 module.exports = function (webpackConfig) {
   webpackConfig.output.path = path.resolve(__dirname, './build');
+  webpackConfig.output.publicPath = '/static';
 
   webpackConfig.devtool = 'cheap-source-map';
   webpackConfig.babel.plugins.push('transform-runtime');

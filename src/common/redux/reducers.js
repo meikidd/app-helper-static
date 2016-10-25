@@ -2,11 +2,11 @@
 import Enums from '../enums';
 
 var initialTimeState = {
-  creator: 'meiqingguang',
-  title: '',
-  device: 'phone',
-  os: 'ios',
-  app: '',
+  // creator: 'meiqingguang',
+  // title: '',
+  // device: 'phone',
+  // os: 'ios',
+  // app: '',
   elements: [{
     id: 1,
     type: Enums.ElementType.TEXT.value,
@@ -79,8 +79,8 @@ export function _tutorial(state = initialTimeState, action) {
       elements[index].text = action.value;
       elements = elements.concat([]);
       return {...state, elements};
-    case 'TITLE_CHANGE':
-      return {...state, title: action.value};
+    // case 'TITLE_CHANGE':
+      // return {...state, title: action.value};
     default:
       return state
   }
